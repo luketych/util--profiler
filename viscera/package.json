@@ -1,0 +1,22 @@
+{
+  "name": "viscera",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "jest": "29.7.0"
+  },
+  "dependencies": {
+    "fast-glob": "3.3.3"
+  }
+}
