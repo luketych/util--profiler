@@ -1,11 +1,6 @@
 // jest.config.js
 /** @type {import('jest').Config} */
 const config = {
-  // Indicates that the project uses ES modules
-  // This helps Jest correctly interpret import/export syntax
-  // We still need "type": "module" in package.json and NODE_OPTIONS
-  extensionsToTreatAsEsm: ['.js'],
-
   // Optional: If dependencies also use ESM and aren't transformed by default,
   // you might need to adjust transformIgnorePatterns.
   // For now, let's keep it simple.

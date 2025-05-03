@@ -1,32 +1,34 @@
-import ImportProfiler from '../src/ImportProfiler.js';
+import { jest, describe, beforeEach, test, expect, afterEach } from '@jest/globals';
 
-// Use top-level await to get the original module first
-const { default: originalDebug } = await import('debug');
-
-// Mock the debug module
+// Mock the debug module using unstable_mockModule
 const mockDebugLog = jest.fn();
-jest.mock('debug', () => { // Synchronous factory
-  // Return a function that returns our mock logger for the specific namespace
-  return {
-    __esModule: true, // Mark as module
+jest.unstable_mockModule('debug', () => ({
+    __esModule: true,
     default: jest.fn((namespace) => {
-      if (namespace === 'app:profiler:imports') {
-        return mockDebugLog;
-      }
-      // Return the original debug for other namespaces if needed
-      return originalDebug(namespace);
-    })
-  };
-});
+        if (namespace === 'app:profiler:imports') {
+            return mockDebugLog;
+        }
+        // You might need to provide a default mock behavior or import the original
+        // For now, let's just return a dummy function for other namespaces
+        return jest.fn(); 
+    }),
+}));
 
 describe('ImportProfiler', () => {
   const MOCK_CALLER_FILE = '/path/to/caller.js';
   const MOCK_RELATIVE_PATH = 'src/caller.js';
   let profiler;
+  let ImportProfiler; // Declare variable to hold the class
 
-  beforeEach(() => {
+  beforeEach(async () => { // Make beforeEach async
     // Reset the mock before each test
     mockDebugLog.mockClear();
+    jest.clearAllMocks();
+    
+    // Dynamically import the class *after* mocks are set up
+    const module = await import('../src/ImportProfiler.js');
+    ImportProfiler = module.default;
+
     // Create a new profiler instance
     profiler = new ImportProfiler(MOCK_CALLER_FILE, MOCK_RELATIVE_PATH);
   });
@@ -80,5 +82,9 @@ describe('ImportProfiler', () => {
    test('summarize does not log if no import was tracked', () => {
     profiler.summarize();
     expect(mockDebugLog).not.toHaveBeenCalled();
+  });
+
+  test('constructor initializes lastTotalTime correctly', () => {
+    expect(profiler.lastTotalTime).toBe(0);
   });
 });
