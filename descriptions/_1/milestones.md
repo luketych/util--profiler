@@ -1,8 +1,8 @@
 [] Milestone 1: Setup & Foundation
 *   Set up project structure (codemods, tests, fixtures, runtime profiler code).
 *   Install dependencies (`jscodeshift`, `debug`, testing tools).
-*   Integrate `ImportProfiler.js`, `profileImport.js` (assuming they exist or need to be created/copied).
-*   Basic unit tests for the runtime profiler code.
+*   [x] Integrate `ImportProfiler.js`, `profileImport.js` (assuming they exist or need to be created/copied).
+*   [x] Basic unit tests for the runtime profiler code.
 
 [] Milestone 2: Core Codemod Development (Dynamic Imports)
 *   Develop `inject-logs` codemod to wrap dynamic `import()` with `profileImport()`.

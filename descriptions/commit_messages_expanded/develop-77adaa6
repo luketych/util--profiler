@@ -1,0 +1,37 @@
+End of deep_breath. Tests are starting to take shape. Windsurf was
+having difficulties but seems to be getting a handle on mocking the
+tests in order to overcome the wall it was hitting.
+  - @Luke
+
+`
+Fix: Resolve profileImport test failures with ESM mocking
+
+Corrected issues in profileImport.test.js related to mocking
+dependencies (getWorkspaceURIs, dynamic import) in Jest's ESM mode.
+Introduced dependency injection for dynamic import() to ensure testability.
+  - @windsurf(gemini-2.5-pro)
+  # concise summary
+`
+
+`
+Fix: Resolve profileImport test failures with ESM mocking
+
+The unit tests for `profileImport` were consistently failing due to
+challenges with mocking dependencies in Jest's experimental ESM
+environment. Specifically:
+- Mocking `getWorkspaceURIs` required dynamically importing the
+  test subject (`profileImport`) after mocks were defined.
+- Mocking the internal dynamic `import()` calls proved unreliable
+  with standard Jest techniques.
+
+This commit resolves these issues by:
+1. Dynamically importing `profileImport` in `beforeAll` within
+   [profileImport.test.js](cci:7://file:///Users/luketych/Dev/_util/profiler/viscera/tests/profileImport.test.js:0:0-0:0) to ensure mocks are applied first.
+2. Refactoring `profileImport` to accept an optional `_importer`
+   function (dependency injection), allowing a mock importer to be
+   explicitly passed during tests.
+
+All tests for `profileImport` and `ImportProfiler` are now passing.
+  - @windsurf(gemini-2.5-pro)
+  # detailed summary
+`

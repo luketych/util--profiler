@@ -1,0 +1,13 @@
+{
+  "name": "mini-profiler-test",
+  "version": "1.0.0",
+  "description": "A miniature project to test dynamic import profiling",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -50,7 +50,7 @@ const mockImporter = jest.fn(async (modulePath) => {
 
 beforeAll(async () => {
     // Dynamically import profileImport after all mocks are defined
-    const module = await import('../src/profileImport.js');
+    const module = await import('../src/profileImport.js'); // Revert to simple import for test setup
     profileImport = module.default;
 });
 

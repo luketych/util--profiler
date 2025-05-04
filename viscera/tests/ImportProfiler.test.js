@@ -26,9 +26,10 @@ describe('ImportProfiler', () => {
     jest.clearAllMocks();
     
     // Dynamically import the class *after* mocks are set up
+    // Revert to standard dynamic import for test setup
     const module = await import('../src/ImportProfiler.js');
-    ImportProfiler = module.default;
-
+    ImportProfiler = module.default; 
+ 
     // Create a new profiler instance
     profiler = new ImportProfiler(MOCK_CALLER_FILE, MOCK_RELATIVE_PATH);
   });
