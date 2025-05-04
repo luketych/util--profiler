@@ -1,0 +1,52 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Run Internal Mini Project (Profiled)",
+      "program": "${workspaceFolder}/test_codebases/internal/mini_project/main.js", 
+      "cwd": "${workspaceFolder}/test_codebases/internal/mini_project",       
+      "env": {
+        "DEBUG": "app:profiler:*" 
+      },
+      "console": "integratedTerminal", 
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Run Internal Mini Project (Normal)",
+      "program": "${workspaceFolder}/test_codebases/internal/mini_project/main.js",
+      "cwd": "${workspaceFolder}/test_codebases/internal/mini_project",
+      "env": {},
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Run External Mini Project (Profiled)",
+      "program": "${workspaceFolder}/test_codebases/external/mini_project/main.js",
+      "cwd": "${workspaceFolder}/test_codebases/external/mini_project",
+      "env": {
+        "DEBUG": "app:profiler:*"
+      },
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Run External Mini Project (Normal)",
+      "program": "${workspaceFolder}/test_codebases/external/mini_project/main.js",
+      "cwd": "${workspaceFolder}/test_codebases/external/mini_project",
+      "env": {},
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }
+  ]
+}
